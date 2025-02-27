@@ -13,11 +13,11 @@ void sortColors(int *nums, int numsSize) {
 
   while (cnt <= right) {
     if (nums[cnt] == 0)
-      swap(&nums[left++], &nums[cnt++]);
-    else if (nums[cnt] == 1)
-      cnt++;
-    else
+      swap(&nums[cnt++], &nums[left++]);
+    else if (nums[cnt] == 2)
       swap(&nums[cnt], &nums[right--]);
+    else
+      cnt++;
   }
 }
 
