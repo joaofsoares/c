@@ -3,9 +3,7 @@
 #include <string.h>
 
 robot_status_t robot_create(robot_direction_t direction, int x, int y) {
-  robot_position_t p = {.x = x, .y = y};
-  robot_status_t r = {direction, p};
-  return r;
+  return (robot_status_t){.direction = direction, .position = {.x = x, .y = y}};
 }
 
 void robot_move(robot_status_t *robot, const char *commands) {
