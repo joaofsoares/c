@@ -5,8 +5,8 @@
 
 uint8_t score(coordinate_t coordinate) {
 
-  float distance = sqrt(coordinate.x * coordinate.x +
-			coordinate.y * coordinate.y);
+  float distance =
+      sqrt(coordinate.x * coordinate.x + coordinate.y * coordinate.y);
 
   if (distance <= 1)
     return 10;
@@ -16,11 +16,10 @@ uint8_t score(coordinate_t coordinate) {
     return 1;
   else
     return 0;
-
 }
 
 int main(void) {
-  coordinate_t coord = { -9.0, 9.0 };
+  coordinate_t coord = {-9.0, 9.0};
   uint8_t result = score(coord);
   printf("result = %d\n", result);
 

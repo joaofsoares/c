@@ -5,7 +5,7 @@ uint64_t square(uint8_t index) {
     uint64_t grains = 1;
     for (int i = 1; i < index; i++) {
       grains *= 2;
-     }
+    }
     return grains;
   }
 
