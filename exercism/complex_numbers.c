@@ -32,5 +32,3 @@ double c_imag(complex_t x) { return x.imag; }
 complex_t c_exp(complex_t x) {
   return (complex_t){exp(x.real) * cos(x.imag), exp(x.real) * sin(x.imag)};
 }
-
-int main(void) { return 0; }

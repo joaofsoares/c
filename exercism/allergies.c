@@ -54,14 +54,3 @@ allergen_list_t get_allergens(int score) {
 
   return result;
 }
-
-int main(void) {
-  allergen_list_t a = get_allergens(1);
-  printf("Allergen count: %d\n", a.count);
-  printf("Eggs: %s\n", a.allergens[ALLERGEN_EGGS] ? "Yes" : "No");
-
-  bool is_allergic = is_allergic_to(ALLERGEN_EGGS, 0);
-  printf("Is allergic to eggs: %s\n", is_allergic ? "Yes" : "No");
-
-  return 0;
-}

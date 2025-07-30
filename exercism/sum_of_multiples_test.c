@@ -1,22 +1,8 @@
 #include "/opt/homebrew/Cellar/cunit/2.1-3/include/CUnit/Basic.h"
 #include "/opt/homebrew/Cellar/cunit/2.1-3/include/CUnit/CUnit.h"
-#include "sum_of_multiples.h"
+#include "sum_of_multiples.c"
 
 #define NUM_OF_ELEMENTS(a) (sizeof(a) / sizeof(a[0]))
-
-unsigned int sum(const unsigned int *factors, const size_t number_of_factors,
-                 const unsigned int limit) {
-  unsigned int total = 0;
-  for (unsigned int i = 0; i < limit; ++i) {
-    for (size_t j = 0; j < number_of_factors; ++j) {
-      if (factors[j] != 0 && i % factors[j] == 0) {
-        total += i;
-        break;
-      }
-    }
-  }
-  return total;
-}
 
 void test_no_multiples_within_limit(void) {
 
