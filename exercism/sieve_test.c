@@ -144,7 +144,7 @@ void test_find_primes_up_to_1000(void) {
 int main(void) {
 
   CU_initialize_registry();
-  CU_pSuite suite = CU_add_suite("Allergies", 0, 0);
+  CU_pSuite suite = CU_add_suite("Sieve", 0, 0);
 
   CU_add_test(suite, "test_no_primes_under_two", test_no_primes_under_two);
   CU_add_test(suite, "test_find_first_prime", test_find_first_prime);
