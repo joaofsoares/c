@@ -1,3 +1,7 @@
+// command to compile
+// gcc -o unity_test unity_test.c -I/opt/homebrew/Cellar/cunit/2.1-3/include
+// -L/opt/homebrew/Cellar/cunit/2.1-3/lib -lcunit
+
 #include "/opt/homebrew/Cellar/cunit/2.1-3/include/CUnit/Basic.h"
 #include "/opt/homebrew/Cellar/cunit/2.1-3/include/CUnit/CUnit.h"
 
@@ -19,7 +23,3 @@ int main() {
 
   return 0;
 }
-
-// command to compile
-// gcc -o unity_test unity_test.c -I/opt/homebrew/Cellar/cunit/2.1-3/include
-// -L/opt/homebrew/Cellar/cunit/2.1-3/lib -lcunit
