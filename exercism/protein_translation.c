@@ -1,4 +1,5 @@
 #include "protein_translation.h"
+#include <stdio.h>
 #include <string.h>
 
 protein_t protein(const char *const rna) {
@@ -22,8 +23,8 @@ protein_t protein(const char *const rna) {
       return protein;
     }
 
-    char tmp[3];
-    sprintf(tmp, "%c%c%c", rna[i], rna[i+1], rna[i+2]);
+    char tmp[4];
+    sprintf(tmp, "%c%c%c", rna[i], rna[i + 1], rna[i + 2]);
 
     if (strcmp(tmp, "AUG") == 0) {
       protein.count++;
@@ -37,8 +38,8 @@ protein_t protein(const char *const rna) {
       protein.count++;
       protein.amino_acids[cnt] = Leucine;
       cnt++;
-    } else if (strcmp(tmp, "UCU") == 0 || strcmp(tmp, "UCC") == 0
-               || strcmp(tmp, "UCA") == 0 || strcmp(tmp, "UCG") == 0) {
+    } else if (strcmp(tmp, "UCU") == 0 || strcmp(tmp, "UCC") == 0 ||
+               strcmp(tmp, "UCA") == 0 || strcmp(tmp, "UCG") == 0) {
       protein.count++;
       protein.amino_acids[cnt] = Serine;
       cnt++;
@@ -54,12 +55,11 @@ protein_t protein(const char *const rna) {
       protein.count++;
       protein.amino_acids[cnt] = Tryptophan;
       cnt++;
-    } else if (strcmp(tmp, "UAA") == 0 || strcmp(tmp, "UAG") == 0
-               || strcmp(tmp, "UGA") == 0) {
+    } else if (strcmp(tmp, "UAA") == 0 || strcmp(tmp, "UAG") == 0 ||
+               strcmp(tmp, "UGA") == 0) {
       protein.valid = true;
       break;
-    }
-    else {
+    } else {
       continue;
     }
   }
