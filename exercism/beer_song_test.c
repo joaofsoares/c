@@ -1,4 +1,4 @@
-#include "./Unity/src/unity.h"
+#include "../Unity/src/unity.h"
 #include "beer_song.c"
 #include <stdint.h>
 #include <stdlib.h>
@@ -12,102 +12,91 @@ char **create_empty_song(uint16_t expected_line_count);
 
 void delete_song(uint16_t expected_line_count, char **actual_song);
 
-void setUp(void) {
-   actual_song = create_empty_song(MAX_LINE_COUNT);
-}
+void setUp(void) { actual_song = create_empty_song(MAX_LINE_COUNT); }
 
-void tearDown(void) {
-   delete_song(MAX_LINE_COUNT, actual_song);
-}
+void tearDown(void) { delete_song(MAX_LINE_COUNT, actual_song); }
 
 char **create_empty_song(uint16_t expected_line_count) {
-   char **actual_song = calloc(expected_line_count, sizeof(*actual_song));
-   for (size_t i = 0; i < expected_line_count; ++i)
-      actual_song[i] = calloc(MAX_LINE_LENGTH, sizeof(**actual_song));
-   return actual_song;
+  char **actual_song = calloc(expected_line_count, sizeof(*actual_song));
+  for (size_t i = 0; i < expected_line_count; ++i)
+    actual_song[i] = calloc(MAX_LINE_LENGTH, sizeof(**actual_song));
+  return actual_song;
 }
 
 void delete_song(uint16_t expected_line_count, char **actual_song) {
-   for (size_t i = 0; i < expected_line_count; ++i)
-      free(actual_song[i]);
-   free(actual_song);
+  for (size_t i = 0; i < expected_line_count; ++i)
+    free(actual_song[i]);
+  free(actual_song);
 }
 
 void check_song(uint16_t expected_line_count,
-                       const char expected_song[][MAX_LINE_LENGTH],
-                       char **actual) {
-   for (size_t i = 0; i < expected_line_count; ++i)
-      TEST_ASSERT_EQUAL_STRING(expected_song[i], actual[i]);
-   for (size_t i = expected_line_count; i < MAX_LINE_COUNT; ++i)
-      TEST_ASSERT_EQUAL_STRING("", actual_song[i]);
+                const char expected_song[][MAX_LINE_LENGTH], char **actual) {
+  for (size_t i = 0; i < expected_line_count; ++i)
+    TEST_ASSERT_EQUAL_STRING(expected_song[i], actual[i]);
+  for (size_t i = expected_line_count; i < MAX_LINE_COUNT; ++i)
+    TEST_ASSERT_EQUAL_STRING("", actual_song[i]);
 }
 
 void test_first_generic_verse(void) {
-   uint16_t expected_line_count = 2;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 2;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "99 bottles of beer on the wall, 99 bottles of beer.",
-      "Take one down and pass it around, 98 bottles of beer on the wall."
-   };
-   recite(99, 1, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Take one down and pass it around, 98 bottles of beer on the wall."};
+  recite(99, 1, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_last_generic_verse(void) {
-   uint16_t expected_line_count = 2;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 2;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "3 bottles of beer on the wall, 3 bottles of beer.",
-      "Take one down and pass it around, 2 bottles of beer on the wall."
-   };
-   recite(3, 1, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Take one down and pass it around, 2 bottles of beer on the wall."};
+  recite(3, 1, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_verse_with_2_bottles(void) {
-   uint16_t expected_line_count = 2;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 2;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "2 bottles of beer on the wall, 2 bottles of beer.",
-      "Take one down and pass it around, 1 bottle of beer on the wall."
-   };
-   recite(2, 1, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Take one down and pass it around, 1 bottle of beer on the wall."};
+  recite(2, 1, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_verse_with_1_bottle(void) {
-   uint16_t expected_line_count = 2;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 2;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "1 bottle of beer on the wall, 1 bottle of beer.",
-      "Take it down and pass it around, no more bottles of beer on the wall."
-   };
-   recite(1, 1, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Take it down and pass it around, no more bottles of beer on the wall."};
+  recite(1, 1, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_verse_with_0_bottles(void) {
-   uint16_t expected_line_count = 2;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 2;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "No more bottles of beer on the wall, no more bottles of beer.",
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-   };
-   recite(0, 1, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Go to the store and buy some more, 99 bottles of beer on the wall."};
+  recite(0, 1, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_first_two_verses(void) {
-   uint16_t expected_line_count = 5;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  uint16_t expected_line_count = 5;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "99 bottles of beer on the wall, 99 bottles of beer.",
       "Take one down and pass it around, 98 bottles of beer on the wall.", "",
       "98 bottles of beer on the wall, 98 bottles of beer.",
-      "Take one down and pass it around, 97 bottles of beer on the wall."
-   };
-   recite(99, 2, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Take one down and pass it around, 97 bottles of beer on the wall."};
+  recite(99, 2, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_last_three_verses(void) {
-   TEST_IGNORE();
-   uint16_t expected_line_count = 8;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  TEST_IGNORE();
+  uint16_t expected_line_count = 8;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "2 bottles of beer on the wall, 2 bottles of beer.",
       "Take one down and pass it around, 1 bottle of beer on the wall.",
       "",
@@ -115,16 +104,15 @@ void test_last_three_verses(void) {
       "Take it down and pass it around, no more bottles of beer on the wall.",
       "",
       "No more bottles of beer on the wall, no more bottles of beer.",
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-   };
-   recite(2, 3, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Go to the store and buy some more, 99 bottles of beer on the wall."};
+  recite(2, 3, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 void test_all_verses(void) {
-   TEST_IGNORE();
-   uint16_t expected_line_count = 299;
-   const char expected_song[][MAX_LINE_LENGTH] = {
+  TEST_IGNORE();
+  uint16_t expected_line_count = 299;
+  const char expected_song[][MAX_LINE_LENGTH] = {
       "99 bottles of beer on the wall, 99 bottles of beer.",
       "Take one down and pass it around, 98 bottles of beer on the wall.",
       "",
@@ -423,23 +411,22 @@ void test_all_verses(void) {
       "Take it down and pass it around, no more bottles of beer on the wall.",
       "",
       "No more bottles of beer on the wall, no more bottles of beer.",
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-   };
-   recite(99, 100, actual_song);
-   check_song(expected_line_count, expected_song, actual_song);
+      "Go to the store and buy some more, 99 bottles of beer on the wall."};
+  recite(99, 100, actual_song);
+  check_song(expected_line_count, expected_song, actual_song);
 }
 
 int main(void) {
-   UNITY_BEGIN();
+  UNITY_BEGIN();
 
-   RUN_TEST(test_first_generic_verse);
-   RUN_TEST(test_last_generic_verse);
-   RUN_TEST(test_verse_with_2_bottles);
-   RUN_TEST(test_verse_with_1_bottle);
-   RUN_TEST(test_verse_with_0_bottles);
-   RUN_TEST(test_first_two_verses);
-   RUN_TEST(test_last_three_verses);
-   RUN_TEST(test_all_verses);
+  RUN_TEST(test_first_generic_verse);
+  RUN_TEST(test_last_generic_verse);
+  RUN_TEST(test_verse_with_2_bottles);
+  RUN_TEST(test_verse_with_1_bottle);
+  RUN_TEST(test_verse_with_0_bottles);
+  RUN_TEST(test_first_two_verses);
+  RUN_TEST(test_last_three_verses);
+  RUN_TEST(test_all_verses);
 
-   return UNITY_END();
+  return UNITY_END();
 }
