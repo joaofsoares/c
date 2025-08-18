@@ -6,9 +6,9 @@
 void recite(uint8_t start_bottles, uint8_t take_down, char **song) {
   int bottles = start_bottles;
 
-  for (size_t i = 0; i < (take_down * 2);) {
-    char num[5];
-    sprintf(num, "%d", bottles);
+  for (int i = 0; i < ((3 * take_down) - 1);) {
+    char num[3];
+    sprintf(num, "%hu", bottles);
 
     // first line
     strcat(song[i], (bottles == 0) ? "No more" : num);
@@ -30,7 +30,7 @@ void recite(uint8_t start_bottles, uint8_t take_down, char **song) {
     }
 
     if (bottles > 0) {
-      sprintf(num, "%d", bottles);
+      sprintf(num, "%hu", bottles);
       strcat(song[i], num);
     } else {
       strcat(song[i], "no more");
@@ -38,5 +38,9 @@ void recite(uint8_t start_bottles, uint8_t take_down, char **song) {
 
     strcat(song[i++], (bottles == 1) ? " bottle of beer on the wall."
                                      : " bottles of beer on the wall.");
+
+    if (i < ((3 * take_down) - 1)) {
+      strcat(song[i++], "");
+    }
   }
 }

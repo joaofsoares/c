@@ -94,7 +94,6 @@ void test_first_two_verses(void) {
 }
 
 void test_last_three_verses(void) {
-  TEST_IGNORE();
   uint16_t expected_line_count = 8;
   const char expected_song[][MAX_LINE_LENGTH] = {
       "2 bottles of beer on the wall, 2 bottles of beer.",
@@ -110,7 +109,6 @@ void test_last_three_verses(void) {
 }
 
 void test_all_verses(void) {
-  TEST_IGNORE();
   uint16_t expected_line_count = 299;
   const char expected_song[][MAX_LINE_LENGTH] = {
       "99 bottles of beer on the wall, 99 bottles of beer.",
