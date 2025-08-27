@@ -1,5 +1,5 @@
 #include "../Unity/src/unity.h"
-#include "yatch.c"
+#include "yacht.c"
 
 void setUp(void) {}
 
@@ -91,16 +91,12 @@ static void test_full_house_two_small_three_big(void) {
 
 static void test_full_house_three_small_two_big(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{5, 3, 3, 5, 3}};
 
   TEST_ASSERT_EQUAL_INT(19, score(dice, FULL_HOUSE));
 }
 
 static void test_two_pair_is_not_a_full_house(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{2, 2, 4, 4, 5}};
 
@@ -109,16 +105,12 @@ static void test_two_pair_is_not_a_full_house(void) {
 
 static void test_four_of_a_kind_is_not_a_full_house(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{1, 4, 4, 4, 4}};
 
   TEST_ASSERT_EQUAL_INT(0, score(dice, FULL_HOUSE));
 }
 
 static void test_yacht_is_not_a_full_house(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{2, 2, 2, 2, 2}};
 
@@ -127,16 +119,12 @@ static void test_yacht_is_not_a_full_house(void) {
 
 static void test_four_of_a_kind(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{6, 6, 4, 6, 6}};
 
   TEST_ASSERT_EQUAL_INT(24, score(dice, FOUR_OF_A_KIND));
 }
 
 static void test_yacht_can_be_scored_as_four_of_a_kind(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{3, 3, 3, 3, 3}};
 
@@ -145,16 +133,12 @@ static void test_yacht_can_be_scored_as_four_of_a_kind(void) {
 
 static void test_full_house_is_not_four_of_a_kind(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{3, 3, 3, 5, 5}};
 
   TEST_ASSERT_EQUAL_INT(0, score(dice, FOUR_OF_A_KIND));
 }
 
 static void test_little_straight(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{3, 5, 4, 1, 2}};
 
@@ -163,16 +147,12 @@ static void test_little_straight(void) {
 
 static void test_little_straight_as_big_straight(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{1, 2, 3, 4, 5}};
 
   TEST_ASSERT_EQUAL_INT(0, score(dice, BIG_STRAIGHT));
 }
 
 static void test_four_in_order_but_not_a_little_straight(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{1, 1, 2, 3, 4}};
 
@@ -181,16 +161,12 @@ static void test_four_in_order_but_not_a_little_straight(void) {
 
 static void test_no_pairs_but_not_a_little_straight(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{1, 2, 3, 4, 6}};
 
   TEST_ASSERT_EQUAL_INT(0, score(dice, LITTLE_STRAIGHT));
 }
 
 static void test_minimum_is_1_maximum_is_5_but_not_a_little_straight(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{1, 1, 3, 4, 5}};
 
@@ -199,16 +175,12 @@ static void test_minimum_is_1_maximum_is_5_but_not_a_little_straight(void) {
 
 static void test_big_straight(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{4, 6, 2, 5, 3}};
 
   TEST_ASSERT_EQUAL_INT(30, score(dice, BIG_STRAIGHT));
 }
 
 static void test_big_straight_as_little_straight(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{6, 5, 4, 3, 2}};
 
@@ -217,8 +189,6 @@ static void test_big_straight_as_little_straight(void) {
 
 static void test_no_pairs_but_not_a_big_straight(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{6, 5, 4, 3, 1}};
 
   TEST_ASSERT_EQUAL_INT(0, score(dice, BIG_STRAIGHT));
@@ -226,16 +196,12 @@ static void test_no_pairs_but_not_a_big_straight(void) {
 
 static void test_choice(void) {
 
-  TEST_IGNORE();
-
   const dice_t dice = {{3, 3, 5, 6, 6}};
 
   TEST_ASSERT_EQUAL_INT(23, score(dice, CHOICE));
 }
 
 static void test_yacht_as_choice(void) {
-
-  TEST_IGNORE();
 
   const dice_t dice = {{2, 2, 2, 2, 2}};
 

@@ -20,6 +20,11 @@ typedef struct {
   int faces[5];
 } dice_t;
 
+typedef struct {
+  int n;
+  int cnt;
+} number_t;
+
 int score(dice_t dice, category_t category);
 
 #endif
