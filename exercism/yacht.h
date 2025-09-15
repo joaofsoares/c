@@ -25,6 +25,20 @@ typedef struct {
   int cnt;
 } number_t;
 
-int score(dice_t dice, category_t category);
+number_t *create_number_type();
+
+int calc_number(dice_t, int);
+
+int calc_yacht(dice_t);
+
+int calc_full_house(dice_t);
+
+int calc_four_kind(dice_t);
+
+int calc_straight(dice_t, int);
+
+int calc_choice(dice_t);
+
+int score(dice_t, category_t);
 
 #endif

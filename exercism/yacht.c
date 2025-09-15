@@ -73,7 +73,7 @@ int calc_four_kind(dice_t dice) {
   return result;
 }
 
-int calc_little_straight(dice_t dice) {
+int calc_straight(dice_t dice, int start) {
   number_t *n = create_number_type();
 
   for (int i = 0; i < 5; i++) {
@@ -81,25 +81,8 @@ int calc_little_straight(dice_t dice) {
   }
 
   int result = 0;
-  if (n[0].cnt == 1 && n[1].cnt == 1 && n[2].cnt == 1 && n[3].cnt == 1 &&
-      n[4].cnt == 1) {
-    result = 30;
-  }
-
-  free(n);
-  return result;
-}
-
-int calc_big_straight(dice_t dice) {
-  number_t *n = create_number_type();
-
-  for (int i = 0; i < 5; i++) {
-    n[dice.faces[i] - 1].cnt++;
-  }
-
-  int result = 0;
-  if (n[1].cnt == 1 && n[2].cnt == 1 && n[3].cnt == 1 && n[4].cnt == 1 &&
-      n[5].cnt == 1) {
+  if (n[start].cnt == 1 && n[start + 1].cnt == 1 && n[start + 2].cnt == 1 &&
+      n[start + 3].cnt == 1 && n[start + 4].cnt == 1) {
     result = 30;
   }
 
@@ -127,10 +110,10 @@ int score(dice_t dice, category_t category) {
     return calc_four_kind(dice);
     break;
   case LITTLE_STRAIGHT:
-    return calc_little_straight(dice);
+    return calc_straight(dice, 0);
     break;
   case BIG_STRAIGHT:
-    return calc_big_straight(dice);
+    return calc_straight(dice, 1);
     break;
   case CHOICE:
     return calc_choice(dice);
