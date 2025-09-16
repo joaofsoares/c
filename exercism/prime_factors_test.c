@@ -1,4 +1,4 @@
-#include "../Unity/src/unity.c"
+#include "../Unity/src/unity.h"
 #include "prime_factors.c"
 
 #define MAXFACTORS 10
@@ -21,8 +21,6 @@ static void test_no_factors(void) {
 }
 
 static void test_prime_number(void) {
-
-  // delete this line to run test
 
   uint64_t expected_factors[] = {2};
 

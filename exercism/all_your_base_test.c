@@ -1,4 +1,4 @@
-#include "../Unity/src/unity.c"
+#include "../Unity/src/unity.h"
 #include "all_your_base.c"
 
 #include <stddef.h>
