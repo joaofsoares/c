@@ -1,4 +1,4 @@
-#include "../Unity/src/unity.c"
+#include "../Unity/src/unity.h"
 #include "scrabble_score.c"
 
 void setUp(void) {}
