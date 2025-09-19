@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int ability(void) {
-  int sum = 0;
+  int sum = {0};
   int min;
 
   for (int j = 0; j < 4; j++) {
