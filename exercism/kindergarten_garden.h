@@ -7,6 +7,8 @@ typedef struct {
   plant_t plants[4];
 } plants_t;
 
-void fill_plants(plants_t *plants, int *cnt, char *split, int start, int end);
+void fill_plants(plants_t *plants, char *split, int start, int *idx);
+
+plants_t plants(const char *diagram, const char *student);
 
 #endif

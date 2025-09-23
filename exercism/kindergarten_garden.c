@@ -1,22 +1,21 @@
 #include "kindergarten_garden.h"
 #include <ctype.h>
-#include <stdio.h>
 #include <string.h>
 
-void fill_plants(plants_t *plants, int *cnt, char *split, int start, int end) {
-  for (size_t i = start; i < end; i++) {
+void fill_plants(plants_t *plants, char *split, int start, int *idx) {
+  for (int i = start; i < (start + 2); i++) {
     switch (split[i]) {
     case 'C':
-      (*plants).plants[(*cnt)++] = CLOVER;
+      (*plants).plants[(*idx)++] = CLOVER;
       break;
     case 'G':
-      (*plants).plants[(*cnt)++] = GRASS;
+      (*plants).plants[(*idx)++] = GRASS;
       break;
     case 'R':
-      (*plants).plants[(*cnt)++] = RADISHES;
+      (*plants).plants[(*idx)++] = RADISHES;
       break;
     case 'V':
-      (*plants).plants[(*cnt)++] = VIOLETS;
+      (*plants).plants[(*idx)++] = VIOLETS;
       break;
     }
   }
@@ -36,29 +35,29 @@ plants_t plants(const char *diagram, const char *student) {
   while (split) {
 
     if (strcmp(student, "Alice") == 0) {
-      fill_plants(&plants, &cnt, split, 0, 2);
+      fill_plants(&plants, split, 0, &cnt);
     } else if (strcmp(student, "Bob") == 0) {
-      fill_plants(&plants, &cnt, split, 2, 4);
+      fill_plants(&plants, split, 2, &cnt);
     } else if (strcmp(student, "Charlie") == 0) {
-      fill_plants(&plants, &cnt, split, 4, 6);
+      fill_plants(&plants, split, 4, &cnt);
     } else if (strcmp(student, "David") == 0) {
-      fill_plants(&plants, &cnt, split, 6, 8);
+      fill_plants(&plants, split, 6, &cnt);
     } else if (strcmp(student, "Eve") == 0) {
-      fill_plants(&plants, &cnt, split, 8, 10);
+      fill_plants(&plants, split, 8, &cnt);
     } else if (strcmp(student, "Fred") == 0) {
-      fill_plants(&plants, &cnt, split, 10, 12);
+      fill_plants(&plants, split, 10, &cnt);
     } else if (strcmp(student, "Ginny") == 0) {
-      fill_plants(&plants, &cnt, split, 12, 14);
+      fill_plants(&plants, split, 12, &cnt);
     } else if (strcmp(student, "Harriet") == 0) {
-      fill_plants(&plants, &cnt, split, 14, 16);
+      fill_plants(&plants, split, 14, &cnt);
     } else if (strcmp(student, "Ileana") == 0) {
-      fill_plants(&plants, &cnt, split, 16, 18);
+      fill_plants(&plants, split, 16, &cnt);
     } else if (strcmp(student, "Joseph") == 0) {
-      fill_plants(&plants, &cnt, split, 18, 20);
+      fill_plants(&plants, split, 18, &cnt);
     } else if (strcmp(student, "Kincaid") == 0) {
-      fill_plants(&plants, &cnt, split, 20, 22);
+      fill_plants(&plants, split, 20, &cnt);
     } else if (strcmp(student, "Larry") == 0) {
-      fill_plants(&plants, &cnt, split, 22, 24);
+      fill_plants(&plants, split, 22, &cnt);
     }
 
     split = strtok(NULL, "\n");
